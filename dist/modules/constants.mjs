@@ -6,8 +6,9 @@ const constants = {
 };
 
 const dataTypes = {
-  scroll: `${constants.moduleId}.scroll`
-}
+  scroll: `${constants.moduleId}.scroll`,
+  ring: `${constants.moduleId}.ring`,
+};
 
 const flags = {
   ammoReplenish: 'ammoReplenish',

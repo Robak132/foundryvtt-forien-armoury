@@ -16,9 +16,12 @@ import {constants, dataTypes, settings} from "./constants.mjs";
 import {styleHelpers} from "./helpers/styleHelpers.js";
 import {registerSettings} from "./Settings.mjs";
 import ScrollSheet from "./apps/ScrollSheet.mjs";
+import RingSheet from "./apps/RingSheet.mjs";
 import ScrollModel from "./data-models/Scroll.mjs";
 import Scrolls from "./features/Scrolls.mjs";
 import Macros from "./features/Macros.js";
+import Rings from "./features/Rings.mjs";
+import RingModel from './data-models/Ring.mjs';
 
 export default class ForienArmoury {
   /**
@@ -35,6 +38,7 @@ export default class ForienArmoury {
     ItemRepair,
     Macros,
     Scrolls,
+    Rings,
     Species,
     TemporaryRunes,
     WorldTimeObserver,
@@ -136,9 +140,15 @@ export default class ForienArmoury {
   #registerDataModels() {
     Object.assign(CONFIG.Item.dataModels, {
       [dataTypes.scroll]: ScrollModel,
+      [dataTypes.ring]: RingModel,
     });
     Object.assign(CONFIG.Item.typeLabels, {
       [dataTypes.scroll]: "Forien.Armoury.Scrolls.MagicScroll",
+      [dataTypes.ring]: "Forien.Armoury.Rings.MagicRing",
+    });
+    DocumentSheetConfig.registerSheet(Item, constants.moduleId, RingSheet, {
+      types: [dataTypes.ring],
+      makeDefault: true,
     });
     DocumentSheetConfig.registerSheet(Item, constants.moduleId, ScrollSheet, {
       types: [dataTypes.scroll],

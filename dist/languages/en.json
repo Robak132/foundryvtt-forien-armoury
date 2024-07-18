@@ -388,6 +388,31 @@
         "MustHaveLore": "Only Spells with Lore can be inscribed on a Scroll!"
       },
 
+      "Rings": {
+        "MagicRing": "Magic Ring",
+        "MagicRings": "Magic Rings",
+        "Ring": "Ring",
+        "Rings": "Rings",
+        "RingOf": "Ring of {spell}",
+        "CastFromRing": "Cast {spell} from ring",
+        "RingTest": "Ring Casting",
+        "DropHere": "Drop Spell here to attach it",
+
+        "NewRingDefaultName": "Empty Magic Ring",
+
+        "MacroCantFind": "Could not find a Spell of „{lore}” Lore and maximum CN of {maxCN}.",
+
+        "ChangeRingNameTitle": "Update Ring's name?",
+        "ChangeRingNameContent": "Update Ring's name to „{name}”?",
+        "ChangeRingDescription": "This will also replace Ring's Description!",
+
+        "ActorCanNotUse": "{actor} can't use the „{ring}”. Either there are no rings left, or Actor does not wear it.",
+        "ItemNotFound": "Something went wrong. Dropped Item was not found!",
+        "MustHaveSource": "Spell must have a source in, or originate from, World or Compendium in order to create a Ring!",
+        "NotASpell": "Only Spells can be stored in a Ring!",
+        "MustHaveLore": "Only Spells with Lore can be stored in a Ring!"
+      },
+
       "Symptoms": {
         "Vertigo": {
           "Name": "Vertigo",
@@ -440,6 +465,7 @@
           "CombatFatigue": "Combat Fatigue",
           "CastingFatigue": "Casting Fatigue",
           "Scrolls": "Scrolls",
+          "Rings": "Rings",
           "Integrations": "Integrations"
         },
 

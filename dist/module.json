@@ -153,6 +153,8 @@
   "documentTypes": {
     "Item": {
       "scroll": {
+      },
+      "ring": {
       }
     }
   },
