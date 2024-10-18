@@ -4,40 +4,27 @@
   "img": "modules/forien-armoury/icons/talents/style_agressive.webp",
   "system": {
     "description": {
-      "type": "String",
-      "label": "Description",
       "value": "<p>Masters of the Steelstorm Assault charge into battle with the relentless fury of a thunderstorm, striking first and striking hard, leaving opponents battered and bewildered in the wake of their initial onslaught.</p><ul><li><p>Once per Round. you may gain an additional Advantage, if you defeat an enemy before they could perform an attack that Round.</p></li></ul><p>You receive following perks, depending on Advances in Melee Skill used with currently equipped weapon:</p><ul><li><p><strong>5+</strong> – <em>Steelstorm Handling </em>— Treat every Slow melee weapon as if it weren't Slow. Treat every other one-handed melee weapon as if it were Fast</p></li><li><p><strong>10+</strong> – <em>Go All In</em> — You may, during your Turn, decide to go <strong>ALL IN</strong>, receiving a +20 modifier for your melee Weapon Test. If you do, all attacks aimed at you will be considered <strong>Unopposed</strong> until the start of your next turn.</p></li><li><p><strong>15+</strong> – <em>Steelstorm Assault</em> — Once per Encounter, you may spend 2 Advantage to perform a Bonus Action with any Initiative value</p></li></ul>"
     },
     "gmdescription": {
-      "type": "String",
-      "label": "Description",
       "value": ""
     },
     "max": {
-      "type": "String",
-      "label": "Max Advances",
       "value": "1"
     },
     "advances": {
-      "type": "Number",
-      "label": "Advances",
       "value": 1,
       "force": false
     },
     "career": {
-      "value": "",
-      "type": "String",
-      "label": "Career"
+      "value": ""
     },
     "tests": {
-      "type": "String",
-      "label": "Tests",
       "value": "Melee when striking first in a Round"
     }
   },
   "effects": [
     {
-      "icon": "modules/forien-armoury/icons/talents/style_agressive.webp",
       "transfer": false,
       "name": "Go All In",
       "_id": "jaCdqRqMuY8i6BwM",
@@ -61,23 +48,6 @@
         },
         "wfrp4e": {
           "hide": false,
-          "applicationData": {
-            "type": "document",
-            "documentType": "Actor",
-            "equipTransfer": false,
-            "avoidTest": {
-              "value": "none"
-            },
-            "testIndependent": false,
-            "prompt": false
-          },
-          "scriptData": [
-            {
-              "label": "Go All In",
-              "trigger": "manual",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goAllIn(args, this);"
-            }
-          ],
           "_legacyData": {
             "effectApplication": "actor",
             "effectTrigger": "invoke",
@@ -86,11 +56,77 @@
           }
         }
       },
-      "tint": null,
+      "tint": "#ffffff",
+      "_stats": {
+        "coreVersion": "12.327",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "img": "modules/forien-armoury/icons/talents/style_agressive.webp",
+      "type": "base",
+      "system": {
+        "transferData": {
+          "type": "document",
+          "originalType": "document",
+          "documentType": "Actor",
+          "avoidTest": {
+            "value": "none",
+            "opposed": false,
+            "prevention": true,
+            "reversed": false
+          },
+          "testIndependent": false,
+          "equipTransfer": false,
+          "selfOnly": false,
+          "prompt": false,
+          "area": {
+            "templateData": {},
+            "keep": false,
+            "aura": {
+              "transferred": false,
+              "render": true
+            },
+            "duration": "sustained"
+          }
+        },
+        "itemTargetData": {
+          "ids": [],
+          "allItems": false
+        },
+        "scriptData": [
+          {
+            "label": "Go All In",
+            "trigger": "manual",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goAllIn(args, this);",
+            "options": {
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          }
+        ],
+        "zone": {
+          "type": "zone",
+          "traits": {},
+          "skipImmediateOnPlacement": false
+        },
+        "sourceData": {
+          "test": {}
+        },
+        "condition": {
+          "value": null,
+          "numbered": false
+        }
+      },
+      "sort": 0,
       "_key": "!items.effects!APBiM8PBN1I9xVHY.jaCdqRqMuY8i6BwM"
     },
     {
-      "icon": "modules/forien-armoury/icons/talents/style_agressive.webp",
       "transfer": true,
       "name": "Steelstorm Assault",
       "_id": "tbjnVqFS8nuQX0sG",
@@ -114,39 +150,6 @@
         },
         "wfrp4e": {
           "hide": false,
-          "applicationData": {
-            "type": "document",
-            "documentType": "Actor",
-            "equipTransfer": false,
-            "avoidTest": {
-              "value": "none"
-            },
-            "testIndependent": false,
-            "prompt": false
-          },
-          "scriptData": [
-            {
-              "label": "Steelstorm Assault",
-              "trigger": "manual",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.steelstormAssault(args, this);"
-            },
-            {
-              "label": "@item.system.tests.value",
-              "script": "args.fields.successBonus++;",
-              "trigger": "dialog",
-              "options": {
-                "dialog": {
-                  "hideScript": "return args.item?.type !== \"weapon\";",
-                  "activateScript": "",
-                  "submissionScript": "",
-                  "targeter": false
-                },
-                "immediate": {
-                  "deleteEffect": false
-                }
-              }
-            }
-          ],
           "_legacyData": {
             "effectApplication": "actor",
             "effectTrigger": "invoke",
@@ -155,11 +158,90 @@
           }
         }
       },
-      "tint": null,
+      "tint": "#ffffff",
+      "_stats": {
+        "coreVersion": "12.327",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "img": "modules/forien-armoury/icons/talents/style_agressive.webp",
+      "type": "base",
+      "system": {
+        "transferData": {
+          "type": "document",
+          "originalType": "document",
+          "documentType": "Actor",
+          "avoidTest": {
+            "value": "none",
+            "opposed": false,
+            "prevention": true,
+            "reversed": false
+          },
+          "testIndependent": false,
+          "equipTransfer": false,
+          "selfOnly": false,
+          "prompt": false,
+          "area": {
+            "templateData": {},
+            "keep": false,
+            "aura": {
+              "transferred": false,
+              "render": true
+            },
+            "duration": "sustained"
+          }
+        },
+        "itemTargetData": {
+          "ids": [],
+          "allItems": false
+        },
+        "scriptData": [
+          {
+            "label": "Steelstorm Assault",
+            "trigger": "manual",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.steelstormAssault(args, this);",
+            "options": {
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          },
+          {
+            "label": "@item.system.tests.value",
+            "script": "args.fields.successBonus++;",
+            "trigger": "dialog",
+            "options": {
+              "hideScript": "return args.item?.type !== \"weapon\";",
+              "activateScript": "",
+              "submissionScript": "",
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          }
+        ],
+        "zone": {
+          "type": "zone",
+          "traits": {},
+          "skipImmediateOnPlacement": false
+        },
+        "sourceData": {
+          "test": {}
+        },
+        "condition": {
+          "value": null,
+          "numbered": false
+        }
+      },
+      "sort": 0,
       "_key": "!items.effects!APBiM8PBN1I9xVHY.tbjnVqFS8nuQX0sG"
     },
     {
-      "icon": "modules/forien-armoury/icons/talents/style_agressive.webp",
       "transfer": true,
       "name": "Steelstorm Handling",
       "_id": "7Vg2r1TdLtsLuwG9",
@@ -184,23 +266,6 @@
         "wfrp4e": {
           "hide": false,
           "promptItem": false,
-          "applicationData": {
-            "type": "document",
-            "documentType": "Actor",
-            "equipTransfer": false,
-            "avoidTest": {
-              "value": "none"
-            },
-            "testIndependent": false,
-            "prompt": false
-          },
-          "scriptData": [
-            {
-              "label": "Steelstorm Handling",
-              "trigger": "prepareItem",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.steelstormHandling(args, this);"
-            }
-          ],
           "_legacyData": {
             "effectApplication": "actor",
             "effectTrigger": "prepareItem",
@@ -209,11 +274,77 @@
           }
         }
       },
-      "tint": null,
+      "tint": "#ffffff",
+      "_stats": {
+        "coreVersion": "12.327",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "img": "modules/forien-armoury/icons/talents/style_agressive.webp",
+      "type": "base",
+      "system": {
+        "transferData": {
+          "type": "document",
+          "originalType": "document",
+          "documentType": "Actor",
+          "avoidTest": {
+            "value": "none",
+            "opposed": false,
+            "prevention": true,
+            "reversed": false
+          },
+          "testIndependent": false,
+          "equipTransfer": false,
+          "selfOnly": false,
+          "prompt": false,
+          "area": {
+            "templateData": {},
+            "keep": false,
+            "aura": {
+              "transferred": false,
+              "render": true
+            },
+            "duration": "sustained"
+          }
+        },
+        "itemTargetData": {
+          "ids": [],
+          "allItems": false
+        },
+        "scriptData": [
+          {
+            "label": "Steelstorm Handling",
+            "trigger": "prepareItem",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.steelstormHandling(args, this);",
+            "options": {
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          }
+        ],
+        "zone": {
+          "type": "zone",
+          "traits": {},
+          "skipImmediateOnPlacement": false
+        },
+        "sourceData": {
+          "test": {}
+        },
+        "condition": {
+          "value": null,
+          "numbered": false
+        }
+      },
+      "sort": 0,
       "_key": "!items.effects!APBiM8PBN1I9xVHY.7Vg2r1TdLtsLuwG9"
     },
     {
-      "icon": "modules/forien-armoury/icons/talents/style_agressive.webp",
       "transfer": false,
       "name": "Going All In",
       "_id": "VuyggOGYWIVDjrfx",
@@ -237,60 +368,6 @@
         },
         "wfrp4e": {
           "hide": false,
-          "applicationData": {
-            "type": "other",
-            "documentType": "Actor",
-            "equipTransfer": false,
-            "avoidTest": {
-              "value": "none"
-            },
-            "testIndependent": false,
-            "prompt": false
-          },
-          "scriptData": [
-            {
-              "label": "Going All In",
-              "trigger": "dialog",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllIn(args, this);",
-              "options": {
-                "dialog": {
-                  "activateScript": "return true"
-                }
-              }
-            },
-            {
-              "label": "Going All In (Mastery)",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllInMastery(args, this);",
-              "trigger": "prepareItem",
-              "options": {
-                "dialog": {
-                  "hideScript": "",
-                  "activateScript": "",
-                  "submissionScript": "",
-                  "targeter": false
-                },
-                "immediate": {
-                  "deleteEffect": false
-                }
-              }
-            },
-            {
-              "label": "Target is Going All In",
-              "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllIn(args, this);",
-              "trigger": "targetPrefillDialog",
-              "options": {
-                "dialog": {
-                  "hideScript": "",
-                  "activateScript": "",
-                  "submissionScript": "",
-                  "targeter": false
-                },
-                "immediate": {
-                  "deleteEffect": false
-                }
-              }
-            }
-          ],
           "_legacyData": {
             "effectApplication": "actor",
             "effectTrigger": "prefillDialog",
@@ -299,7 +376,101 @@
           }
         }
       },
-      "tint": null,
+      "tint": "#ffffff",
+      "_stats": {
+        "coreVersion": "12.327",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "img": "modules/forien-armoury/icons/talents/style_agressive.webp",
+      "type": "base",
+      "system": {
+        "transferData": {
+          "type": "other",
+          "originalType": "document",
+          "documentType": "Actor",
+          "avoidTest": {
+            "value": "none",
+            "opposed": false,
+            "prevention": true,
+            "reversed": false
+          },
+          "testIndependent": false,
+          "equipTransfer": false,
+          "selfOnly": false,
+          "prompt": false,
+          "area": {
+            "templateData": {},
+            "keep": false,
+            "aura": {
+              "transferred": false,
+              "render": true
+            },
+            "duration": "sustained"
+          }
+        },
+        "itemTargetData": {
+          "ids": [],
+          "allItems": false
+        },
+        "scriptData": [
+          {
+            "label": "Going All In",
+            "trigger": "dialog",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllIn(args, this);",
+            "options": {
+              "activateScript": "return true",
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          },
+          {
+            "label": "Going All In (Mastery)",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllInMastery(args, this);",
+            "trigger": "prepareItem",
+            "options": {
+              "hideScript": "",
+              "activateScript": "",
+              "submissionScript": "",
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          },
+          {
+            "label": "Target is Going All In",
+            "script": "game.modules.get(\"forien-armoury\")?.api.helpers.styles.goingAllIn(args, this);",
+            "trigger": "targetPrefillDialog",
+            "options": {
+              "hideScript": "",
+              "activateScript": "",
+              "submissionScript": "",
+              "targeter": false,
+              "deleteEffect": false
+            },
+            "async": false
+          }
+        ],
+        "zone": {
+          "type": "zone",
+          "traits": {},
+          "skipImmediateOnPlacement": false
+        },
+        "sourceData": {
+          "test": {}
+        },
+        "condition": {
+          "value": null,
+          "numbered": false
+        }
+      },
+      "sort": 0,
       "_key": "!items.effects!APBiM8PBN1I9xVHY.VuyggOGYWIVDjrfx"
     }
   ],
@@ -317,11 +488,13 @@
   },
   "_stats": {
     "systemId": "wfrp4e",
-    "systemVersion": "7.1.2",
-    "coreVersion": "11.315",
+    "systemVersion": "8.0.1",
+    "coreVersion": "12.331",
     "createdTime": 1702057628149,
-    "modifiedTime": 1714322706187,
-    "lastModifiedBy": "rTgnwDbJCJYDenyf"
+    "modifiedTime": 1725649107156,
+    "lastModifiedBy": "fFoy1XcWdYw2CdYl",
+    "compendiumSource": null,
+    "duplicateSource": null
   },
   "_id": "APBiM8PBN1I9xVHY",
   "sort": 200000,

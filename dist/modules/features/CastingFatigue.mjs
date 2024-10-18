@@ -19,8 +19,10 @@ export default class CastingFatigue extends ForienBaseModule {
   bindHooks() {
     Hooks.on("wfrp4e:rollChannelTest", this.#processRollChannelTest.bind(this));
     Hooks.on("wfrp4e:rollCastTest", this.#processRollCastTest.bind(this));
-    Hooks.on("renderActorSheetWfrp4eCharacter", this.#onRenderActorSheet.bind(this));
-    Hooks.on("renderActorSheetWfrp4eNPC", this.#onRenderActorSheet.bind(this));
+    Hooks.on("renderActorSheetWFRP4eCharacter", this.#onRenderActorSheet.bind(this));
+    Hooks.on("renderActorSheetWFRP4eNPC", this.#onRenderActorSheet.bind(this));
+    Hooks.on("renderActorSheetWFRP4eCharacterV2", this.#onRenderActorV2Sheet.bind(this));
+    // Hooks.on("renderActorSheetWFRP4eNPCV2", this.#onRenderActorV2Sheet.bind(this));
     Hooks.on("ready", this.#registerAutoRegenListeners.bind(this));
   }
 
@@ -55,7 +57,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorSheetWfrp4e} sheet
+   * @param {ActorSheetWFRP4e} sheet
    * @param {jQuery} html
    * @param {{}} _options
    */
@@ -74,8 +76,29 @@ export default class CastingFatigue extends ForienBaseModule {
   }
 
   /**
+   *
+   * @param {ActorSheetWFRP4e} sheet
+   * @param {HTMLElement} html
+   * @param {{}} _options
+   */
+  #onRenderActorV2Sheet(sheet, html, _options) {
+    if (!this.magicalEnduranceEnabled) return;
+
+    const tabMagic = html.querySelector('.tab[data-tab="magic"]');
+    const actor = sheet.actor;
+    const magicalEndurance = this.getMagicalEnduranceData(actor);
+
+    renderTemplate(Utility.getTemplate(this.templates.magicalEndurance), magicalEndurance).then(content => {
+      const child = Utility.stringToHTMLElement(content)
+      tabMagic.prepend(child);
+
+      html.querySelector('#magical-endurance-value').addEventListener("change", (ev) => this.#onMagicalEnduranceValueChange(ev, actor));
+    });
+  }
+
+  /**
    * @param {Event} ev
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    *
    * @return {Promise<void>}
    */
@@ -96,10 +119,10 @@ export default class CastingFatigue extends ForienBaseModule {
 
     debug('[CastingFatigue] Casting Test Rolled', {test, options, enabled: this.magicalEnduranceEnabled});
 
-    if (!(test.actor instanceof ActorWfrp4e && test.actor.isOwner))
+    if (!(test.actor instanceof ActorWFRP4e && test.actor.isOwner))
       return;
 
-    if (Utility.getSetting(settings.scrolls.magicalEndurance) <= 0)
+    if (test instanceof ScrollTest && Utility.getSetting(settings.scrolls.magicalEndurance) <= 0)
       return;
 
     this.spendMagicalEndurance(test.actor, this.getCnToUse(test));
@@ -113,7 +136,7 @@ export default class CastingFatigue extends ForienBaseModule {
     if (!this.magicalEnduranceEnabled) return;
     debug('[CastingFatigue] Channeling Test Rolled', {test, options, enabled: this.magicalEnduranceEnabled});
 
-    if (!(test.actor instanceof ActorWfrp4e && test.actor.isOwner))
+    if (!(test.actor instanceof ActorWFRP4e && test.actor.isOwner))
       return;
 
     this.spendMagicalEndurance(test.actor, this.costOfChanneling);
@@ -133,7 +156,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    * @param {number} endurance
    *
    * @return {Promise<void>}
@@ -158,7 +181,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    * @param {MagicEnduranceDataModel} magicalEndurance
    *
    * @return {TestWFRP|false}
@@ -182,7 +205,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    * @param {string} difficulty
    *
    * @return {Promise<TestWFRP>}
@@ -237,7 +260,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    *
    * @return {number}
    */
@@ -264,7 +287,7 @@ export default class CastingFatigue extends ForienBaseModule {
 
   /**
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    *
    * @return {number}
    */
@@ -277,7 +300,7 @@ export default class CastingFatigue extends ForienBaseModule {
   }
 
   /**
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    *
    * @return {MagicEnduranceDataModel}
    */
@@ -303,7 +326,7 @@ export default class CastingFatigue extends ForienBaseModule {
   }
 
   /**
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    * @param {MagicEnduranceDataModel} data
    *
    * @return {MagicEnduranceDataModel}
@@ -316,7 +339,7 @@ export default class CastingFatigue extends ForienBaseModule {
   }
 
   /**
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    *
    * @return {number}
    */
@@ -344,7 +367,7 @@ export default class CastingFatigue extends ForienBaseModule {
   /**
    * Registers new listener with the WorldTimeObserver for Actors that use Magical Endurance Data
    *
-   * @param {ActorWfrp4e} actor
+   * @param {ActorWFRP4e} actor
    * @param {number|null} lastRegen
    */
   #registerAutoRegenListener(actor, lastRegen = null) {

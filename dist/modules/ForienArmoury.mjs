@@ -20,6 +20,9 @@ import RingSheet from "./apps/RingSheet.mjs";
 import ScrollModel from "./data-models/Scroll.mjs";
 import Scrolls from "./features/Scrolls.mjs";
 import Macros from "./features/Macros.js";
+import GrimoireModel from "./data-models/Grimoire.mjs";
+import GrimoireSheet from "./apps/GrimoireSheet.mjs";
+import Grimoires from "./features/Grimoires.mjs";
 import Rings from "./features/Rings.mjs";
 import RingModel from './data-models/Ring.mjs';
 
@@ -33,6 +36,7 @@ export default class ForienArmoury {
     CheckCareers,
     CombatFatigue,
     Diseases,
+    Grimoires,
     Integrations,
     ItemProperties,
     ItemRepair,
@@ -140,10 +144,12 @@ export default class ForienArmoury {
   #registerDataModels() {
     Object.assign(CONFIG.Item.dataModels, {
       [dataTypes.scroll]: ScrollModel,
-      [dataTypes.ring]: RingModel,
+      [dataTypes.grimoire]: GrimoireModel,
+      [dataTypes.ring]: RingModel
     });
     Object.assign(CONFIG.Item.typeLabels, {
       [dataTypes.scroll]: "Forien.Armoury.Scrolls.MagicScroll",
+      [dataTypes.grimoire]: "Forien.Armoury.Grimoires.Grimoire",
       [dataTypes.ring]: "Forien.Armoury.Rings.MagicRing",
     });
     DocumentSheetConfig.registerSheet(Item, constants.moduleId, RingSheet, {
@@ -152,6 +158,10 @@ export default class ForienArmoury {
     });
     DocumentSheetConfig.registerSheet(Item, constants.moduleId, ScrollSheet, {
       types: [dataTypes.scroll],
+      makeDefault: true
+    });
+    DocumentSheetConfig.registerSheet(Item, constants.moduleId, GrimoireSheet, {
+      types: [dataTypes.grimoire],
       makeDefault: true
     });
   }

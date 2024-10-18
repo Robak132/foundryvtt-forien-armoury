@@ -1,5 +1,48 @@
 # Changelog
 
+## v3.X.X
+
+### v3.3.0
+* Added GM and Player Macros for toggling `Engaged` status
+* Added `Explorer's Backpack`, which allows attaching a Bedroll and a Lantern
+* Updated Document Event Listeners (`preCreateData`, `updateChecks`, `createChecks` and `deleteChecks`) to their new equivalents to match current WFRP4e code. This fixes:
+  * Default Encumbrance and Rarity not applying to Grimoires and Scrolls
+  * Scrolls not prompting to update Description
+  * Grimoires not awarding spells when added to Actor (when equipping is not required)
+  * Grimoires not taking spells away when removed from Actor (when equipping is not required)
+* Updated references to some WFRP4e classes. This fixes `Item Repair` and `Generate Random Scroll` Macros.
+
+
+### v3.2.0
+* Fixed Grimoires not applying SourceId flag correctly, resulting in duplicating spells in very specific conditions
+* Fixed spelling in Hooks registration after they have been renamed
+* Added support for Character Sheet v2 introduced in WFRP4e 8.1.0 for Magical Endurance and Scrolls.
+
+### v3.1.1
+* Fixed multiple macros and features being broken due to renaming of Actor class from `ActorWfrp4e` to `ActorWFRP4e`
+* Fixed Combat Fatigue not being handled due to API changes (scripts being moved from `game.wfrp4e.combat.scripts` to `CombatHelpers`)
+
+### v3.1.0
+* Updated for Active Effects using Data Models (with [Warhammer Library](https://foundryvtt.com/packages/warhammer-lib)) and verified for WFRP4e 8.0.1
+* Created `Grimoire` type for Items.
+  * This is new item type in the system, which allows to transfer spells from Grimoires without need to add spells themselves to an Actor.
+  * It allows GMs to create items that award spells when held (or equipped, configurable) and take the spells away when grimoire is lost (or unequipped)
+  * Memorized spells are not removed
+  * Additional options to limit spells based on known language, lores, ability to Read/Write etc.
+
+### v3.0.0
+* Verified for Foundry v12 and set it as minimum version
+* Fixed Slashing label error
+* Fixed Poisonous applying on SL lower than rating instead higher than rating
+* Changed deprecated calls `roll({async: false})` to `evaluateSync()` in Arrow Reclamation
+* Fixed Magical Endurance not being retracted for directly casting spells if cost for using scrolls was set to 0
+* Fixed Dialog Title in `Make Extended Lockpick Test` macro not being localized
+  * This change does not require re-importing the macro 
+* Fixed `Generate Ingredient for Spell` macro, and moved it to `Macros` class for better support in the future
+  * This change requires re-importing the macro from Compendium
+* Removed deprecated macros from Compendium
+
+
 ## v2.X.X
 
 ### v2.1.2
