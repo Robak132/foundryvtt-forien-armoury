@@ -25,6 +25,7 @@ import GrimoireSheet from "./apps/GrimoireSheet.mjs";
 import Grimoires from "./features/Grimoires.mjs";
 import Rings from "./features/Rings.mjs";
 import RingModel from './data-models/Ring.mjs';
+import Injuries from "./features/Injuries.mjs";
 
 export default class ForienArmoury {
   /**
@@ -38,6 +39,7 @@ export default class ForienArmoury {
     Diseases,
     Grimoires,
     Integrations,
+    Injuries,
     ItemProperties,
     ItemRepair,
     Macros,

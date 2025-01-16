@@ -1,3 +1,5 @@
-2024/11/15-00:46:12.578 5e0 Recovering log #30
-2024/11/15-00:46:12.581 5e0 Delete type=0 #30
-2024/11/15-00:46:12.581 5e0 Delete type=3 #28
+2024/11/04-21:47:03.053 911c Delete type=3 #1
+2024/11/04-21:47:03.057 bfec Level-0 table #5: started
+2024/11/04-21:47:03.060 bfec Level-0 table #5: 11414 bytes OK
+2024/11/04-21:47:03.064 bfec Delete type=0 #3
+2024/11/04-21:47:03.064 bfec Manual compaction at level-0 from '!folders!K7bIr7HUorfHR7Xh' @ 72057594037927935 : 1 .. '!macros!ynLKA5lklO79GE9P' @ 0 : 0; will stop at (end)

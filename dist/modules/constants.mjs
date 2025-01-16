@@ -31,6 +31,9 @@ const flags = {
       isImportFolder: 'isImportFolder'
     }
   },
+  injuries: {
+    lastProgress: 'lastProgress'
+  },
   itemRepair: {
     type: 'type',
     subtype: 'subtype'
@@ -86,6 +89,9 @@ const settings = {
     defaultAvailability: 'grimoires.defaultAvailability'
   },
   initialized: 'module.initialized',
+  injuries: {
+    autoProgress: 'injuries.automateProgression'
+  },
   integrations: {
     atl: {
       resetPresets: 'atl.resetPresets'
@@ -152,6 +158,9 @@ const defaults = {
     ownCategory: true,
     defaultEncumbrance: 1,
     defaultAvailability: "exotic",
+  },
+  injuries: {
+    autoProgress: false
   },
   magicalEndurance: {
     enabled: false,

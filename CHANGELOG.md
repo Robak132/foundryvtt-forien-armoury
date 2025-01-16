@@ -2,6 +2,19 @@
 
 ## v3.X.X
 
+### v3.4.2
+* Fix Check Career macro for WFPR4e 8.3.0
+
+### v3.4.1
+* Fix Item Repair macros throwing an error when Weapons have no integer Damage value – for example `SB` or blank ([#51](https://github.com/Forien/foundryvtt-forien-armoury/issues/51))
+* Add support for Armour Items from `Archives of the Empire Vol. III` for Item Repair macros
+
+### v3.4.0
+* Added Automatic Injury Progression feature
+* Updated Automatic Disease Progression feature to use system's functions for decrementation instead of custom ones
+* Restored Merchants Compendium
+* Minor fix to script in `Explorer's Backpack`. It will no longer throw console errors when bedroll or lantern is not found.  
+
 ### v3.3.0
 * Added GM and Player Macros for toggling `Engaged` status
 * Added `Explorer's Backpack`, which allows attaching a Bedroll and a Lantern

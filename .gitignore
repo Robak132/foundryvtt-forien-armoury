@@ -9,4 +9,4 @@ package-lock.json
 /changelog.html
 _oldStuff
 dist/packs
-
+**/LOG
